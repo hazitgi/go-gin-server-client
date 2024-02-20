@@ -32,19 +32,7 @@ export default function UserDetail() {
             })
     }
 
-    function getUserDetails() {
-        console.log("get user detail");
-        fetch(usetDetailApi, {
-            method: "GET",
-        })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                console.log(data);
-                setData(data);
-            })
-    }
+
 
     function deleteUser(event) {
         event.preventDefault();
@@ -64,9 +52,24 @@ export default function UserDetail() {
 
 
     useEffect(() => {
+
+        function getUserDetails() {
+            console.log("get user detail");
+            fetch(usetDetailApi, {
+                method: "GET",
+            })
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    setData(data);
+                })
+        }
+
         getUserDetails();
 
-    }, [])
+    }, [usetDetailApi])
 
     return (
         <div>
