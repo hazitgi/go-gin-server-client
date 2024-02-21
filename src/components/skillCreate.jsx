@@ -5,7 +5,7 @@ export default function CreateSkill() {
         var skillName = event.target.elements.skillName.value;
         console.log(skillName);
 
-        fetch("http://localhost:8080/api/skills", {
+        fetch("https://skills.buildfromzero.com/api/skills", {
             method: "POST",
             body: JSON.stringify({
                 "skillName": skillName,

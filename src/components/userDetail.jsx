@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 export default function UserDetail() {
     const [data, setData] = useState([]);
     const { userId } = useParams();
-    const usetDetailApi = "http://localhost:8080/api/users/" + userId + "/";
+    const usetDetailApi = "https://skills.buildfromzero.com/api/users/" + userId + "/";
 
     console.log("UserDetailApi: ", usetDetailApi);
 
