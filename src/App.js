@@ -1,21 +1,20 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import '@floating-ui/react';
 import './App.css';
-import Home from './routes/home';
-import UserLogin from './routes/login';
-import ErrorPage from "./routes/error-pages";
-import UserPage from './routes/users';
-
 import {
     createBrowserRouter,
     RouterProvider,
 } from "react-router-dom";
+
+import Home from './routes/home';
+import UserLogin from './routes/login';
+import ErrorPage from "./routes/error-pages";
+import UserPage from './routes/users';
 import SkillPage from './routes/skills';
 import UserDetail from './routes/userDetail';
 
 
 const router = createBrowserRouter([
-
     {
         path: "/",
         element: <Home />,
