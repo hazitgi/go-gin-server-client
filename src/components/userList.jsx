@@ -1,34 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import GetBaseUrl from "./conf";
 import User from "./user";
 
 export default function UserList() {
-
   const [data, setData] = useState([]);
 
   function reloadUserList(event) {
-    // console.log(event);
-    fetch("https://skills.buildfromzero.com/api/users/", {
+    console.log(event);
+    const apiEndPoint = GetBaseUrl() + "/api/users/";
+    fetch(apiEndPoint, {
       method: "GET",
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         console.log(data);
         setData(data);
         // alert(JSON.stringify(data));
-      })
-  };
+      });
+  }
 
   useEffect(() => {
     console.log("effects");
     reloadUserList(null);
-  }, [])
+  }, []);
 
   return (
     <div>
       <br />
-      <h3>User List</h3>
+      <h3>
+        Users
+        <button
+          type="simpleQuery"
+          className="btn btn-sm btn-link"
+          onClick={reloadUserList}
+        >
+          Refresh table
+        </button>
+      </h3>
       <br />
-      <button type="simpleQuery" className="btn btn-dark" onClick={reloadUserList}>Reload User List</button>
+
       <br />
       <table class="table">
         <thead>
@@ -40,15 +50,11 @@ export default function UserList() {
           </tr>
         </thead>
         <tbody>
-          {
-            data.map((item) => (
-              <User id={item.id} fullName={item.fullName} email={item.email} />
-            ))
-          }
+          {data.map((item) => (
+            <User id={item.id} fullName={item.fullName} email={item.email} />
+          ))}
         </tbody>
       </table>
     </div>
-
-
   );
 }
