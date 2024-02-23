@@ -1,6 +1,6 @@
-import GetBaseUrl from "./conf";
+import GetBaseUrl from "../conf";
 
-export default function CreateUser() {
+export default function CreateUser({ reloadUserList }) {
   function onSubmission(event) {
     event.preventDefault();
 
@@ -9,7 +9,7 @@ export default function CreateUser() {
     console.log(fullName);
     console.log(email);
 
-    const apiEndpoint = GetBaseUrl() + "/api/users";
+    const apiEndpoint = GetBaseUrl() + "/api/users/";
 
     fetch(apiEndpoint, {
       method: "POST",
@@ -17,14 +17,13 @@ export default function CreateUser() {
         fullName: fullName,
         email: email,
       }),
-      // headers: {
-      //     "Content-type": "application/json; charset=UTF-8",
-      // },
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        alert(JSON.stringify(data));
+        // update user list
+        reloadUserList();
+        // alert(JSON.stringify(data));
       });
   }
   return (

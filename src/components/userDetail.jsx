@@ -1,12 +1,15 @@
 import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import { useState, useEffect } from "react";
-import GetBaseUrl from "./conf";
+import GetBaseUrl from "../conf";
 
 export default function UserDetail() {
   const [data, setData] = useState([]);
   const { userId } = useParams();
   const apiEndPoint = GetBaseUrl() + "/api/users/" + userId + "/";
+
+  const navigate = useNavigate();
 
   console.log("UserDetailApi: ", apiEndPoint);
 
@@ -45,6 +48,7 @@ export default function UserDetail() {
       .then((data) => {
         console.log(data);
         alert(JSON.stringify(data));
+        navigate("/users");
       });
   }
 

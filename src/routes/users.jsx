@@ -2,8 +2,19 @@ import UserList from "../components/userList";
 import Navbar from "../components/navbar";
 import CreateUser from "../components/userCreate";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function UserPage() {
+  const [reloadUserListState, setUserReload] = useState(false);
+
+  function handleUserListReload() {
+    setUserReload(true);
+  }
+
+  function reloadCompleted() {
+    setUserReload(false);
+  }
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -33,7 +44,7 @@ function UserPage() {
 
       <div className="row align-items-center">
         <div className="col-4">
-          <CreateUser />
+          <CreateUser reloadUserList={handleUserListReload} />
         </div>
       </div>
 
@@ -41,7 +52,10 @@ function UserPage() {
 
       <div className="row">
         <div className="col">
-          <UserList />
+          <UserList
+            reloadState={reloadUserListState}
+            userListReloadComplete={reloadCompleted}
+          />
         </div>
       </div>
 

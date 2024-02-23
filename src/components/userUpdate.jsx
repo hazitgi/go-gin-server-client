@@ -1,4 +1,4 @@
-import GetBaseUrl from "./conf";
+import GetBaseUrl from "../conf";
 
 export default function UpdateUser() {
   function onSubmission(event) {
@@ -8,7 +8,7 @@ export default function UpdateUser() {
     var email = event.target.elements.email.value;
     console.log(fullName);
     console.log(email);
-    const apiEndpoint = GetBaseUrl() + "/api/users";
+    const apiEndpoint = GetBaseUrl + "/api/users";
 
     fetch(apiEndpoint, {
       method: "POST",

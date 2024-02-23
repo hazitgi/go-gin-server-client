@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import GetBaseUrl from "./conf";
+import GetBaseUrl from "../conf";
 import User from "./user";
 
-export default function UserList() {
+export default function UserList({ reloadState, userListReloadComplete }) {
   const [data, setData] = useState([]);
 
-  function reloadUserList(event) {
+  function handleUserListRefresh(event) {
     console.log(event);
     const apiEndPoint = GetBaseUrl() + "/api/users/";
     fetch(apiEndPoint, {
@@ -15,28 +15,18 @@ export default function UserList() {
       .then((data) => {
         console.log(data);
         setData(data);
-        // alert(JSON.stringify(data));
       });
   }
 
   useEffect(() => {
-    console.log("effects");
-    reloadUserList(null);
-  }, []);
+    handleUserListRefresh(null);
+    userListReloadComplete();
+  }, [reloadState, userListReloadComplete]);
 
   return (
     <div>
       <br />
-      <h3>
-        Users
-        <button
-          type="simpleQuery"
-          className="btn btn-sm btn-link"
-          onClick={reloadUserList}
-        >
-          Refresh table
-        </button>
-      </h3>
+      <h3>Users</h3>
       <br />
 
       <br />
