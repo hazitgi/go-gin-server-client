@@ -41,7 +41,12 @@ export default function UserList({ reloadState, userListReloadComplete }) {
         </thead>
         <tbody>
           {data.map((item) => (
-            <User id={item.id} fullName={item.fullName} email={item.email} />
+            <User
+              id={item.id}
+              fullName={item.fullName}
+              email={item.email}
+              competence={item.competence}
+            />
           ))}
         </tbody>
       </table>
