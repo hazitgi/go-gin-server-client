@@ -10,6 +10,8 @@ import UserPage from "./routes/users";
 import SkillPage from "./routes/skills";
 import UserDetail from "./routes/userDetail";
 import SkillDetailPage from "./routes/skillDetail";
+import SkillGroupPage from "./routes/skillGroups";
+import SkillGroupDetail from "./components/skillGroupDetail";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,16 @@ const router = createBrowserRouter([
   {
     path: "/skills/:skillId/",
     element: <SkillDetailPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/skill-groups",
+    element: <SkillGroupPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/skill-groups/:groupId/",
+    element: <SkillGroupDetail />,
     errorElement: <ErrorPage />,
   },
   {

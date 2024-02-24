@@ -35,6 +35,13 @@ export default function Navbar() {
                 Skills
               </Link>
             </li>
+
+            <li class="nav-item">
+              <Link to={`/skill-groups`} class="nav-link">
+                Skill Groups
+              </Link>
+            </li>
+
             <li class="nav-item">
               <Link to={`/login`} class="nav-link">
                 Logout
