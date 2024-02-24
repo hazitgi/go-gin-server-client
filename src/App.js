@@ -9,6 +9,7 @@ import ErrorPage from "./routes/error-pages";
 import UserPage from "./routes/users";
 import SkillPage from "./routes/skills";
 import UserDetail from "./routes/userDetail";
+import SkillDetailPage from "./routes/skillDetail";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
   {
     path: "/skills",
     element: <SkillPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/skills/:skillId/",
+    element: <SkillDetailPage />,
     errorElement: <ErrorPage />,
   },
   {
