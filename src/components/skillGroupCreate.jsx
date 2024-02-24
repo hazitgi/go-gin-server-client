@@ -5,17 +5,13 @@ export default function CreateSkillGroup({ reloadList }) {
     event.preventDefault();
 
     var name = event.target.elements.name.value;
-    var group = event.target.elements.group.value;
-    console.log(name);
-    console.log(group);
 
-    const apiEndpoint = GetBaseUrl() + "/api/skills/";
+    const apiEndpoint = GetBaseUrl() + "/api/skill-groups/";
 
     fetch(apiEndpoint, {
       method: "POST",
       body: JSON.stringify({
         name: name,
-        group: group,
       }),
     })
       .then((response) => response.json())
@@ -32,10 +28,6 @@ export default function CreateSkillGroup({ reloadList }) {
         <div className="mb-3">
           <label className="form-label">Name</label>
           <input type="text" className="form-control" id="name" />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Group</label>
-          <input type="text" className="form-control" id="group" />
         </div>
         <button type="submit" className="btn btn-primary">
           Submit
