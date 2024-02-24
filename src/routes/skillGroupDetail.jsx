@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import SkillDetail from "../components/skillDetail";
+import SkillGroupDetail from "../components/skillGroupDetail";
+import SkillGroupPage from "./skillGroups";
 
-function SkillDetailPage() {
+function SkillGroupDetailPage() {
   return (
     <div className="container-fluid">
       <div className="row">
@@ -32,7 +34,7 @@ function SkillDetailPage() {
 
       <div className="row align-items-center">
         <div className="col-4">
-          <SkillDetail />
+          <SkillGroupDetail />
         </div>
       </div>
 
@@ -41,4 +43,4 @@ function SkillDetailPage() {
   );
 }
 
-export default SkillDetailPage;
+export default SkillGroupDetailPage;

@@ -6,8 +6,8 @@ import GetBaseUrl from "../conf";
 
 export default function SkillGroupDetail() {
   const [data, setData] = useState([]);
-  const { skillId } = useParams();
-  const apiEndPoint = GetBaseUrl() + "/api/skills/" + skillId + "/";
+  const { groupId } = useParams();
+  const apiEndPoint = GetBaseUrl() + "/api/skill-groups/" + groupId + "/";
 
   const navigate = useNavigate();
 
@@ -15,13 +15,11 @@ export default function SkillGroupDetail() {
     event.preventDefault();
 
     var name = event.target.elements.name.value;
-    var group = event.target.elements.group.value;
 
     fetch(apiEndPoint, {
       method: "PATCH",
       body: JSON.stringify({
         name: name,
-        group: group,
       }),
     })
       .then((response) => response.json())
@@ -44,7 +42,7 @@ export default function SkillGroupDetail() {
       .then((data) => {
         console.log(data);
         alert(JSON.stringify(data));
-        navigate("/skills");
+        navigate("/skill-groups");
       });
   }
 
@@ -79,15 +77,7 @@ export default function SkillGroupDetail() {
             defaultValue={data.name}
           />
         </div>
-        <div className="mb-3">
-          <label className="form-label">Group</label>
-          <input
-            type="text"
-            className="form-control"
-            id="group"
-            defaultValue={data.group}
-          />
-        </div>
+
         <button type="submit" className="btn btn-primary">
           Update
         </button>
