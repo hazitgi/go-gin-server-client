@@ -1,9 +1,20 @@
 import Navbar from "../components/navbar";
-import SkillList from "../components/skillList";
 import CreateSkill from "../components/skillCreate";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import SkillList from "../components/skillList";
 
-function SkillPage() {
+function SkillsPage() {
+  const [reloadSkillListState, setSkillReload] = useState(false);
+
+  function handleSkillListReload() {
+    setSkillReload(true);
+  }
+
+  function reloadCompleted() {
+    setSkillReload(false);
+  }
+
   return (
     <div className="container-fluid">
       <div className="row">
@@ -16,9 +27,15 @@ function SkillPage() {
 
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <Link to={`/home`} class="breadcrumb-item active" aria-current="page">
-            Home
-          </Link>
+          <li class="breadcrumb-item">
+            <Link
+              to={`/home`}
+              class="breadcrumb-item active"
+              aria-current="page"
+            >
+              Home
+            </Link>
+          </li>
           <li class="breadcrumb-item active">Skills</li>
         </ol>
       </nav>
@@ -27,7 +44,7 @@ function SkillPage() {
 
       <div className="row align-items-center">
         <div className="col-4">
-          <CreateSkill />
+          <CreateSkill reloadList={handleSkillListReload} />
         </div>
       </div>
 
@@ -35,7 +52,10 @@ function SkillPage() {
 
       <div className="row">
         <div className="col">
-          <SkillList />
+          <SkillList
+            reloadState={reloadSkillListState}
+            skillListReloadComplete={reloadCompleted}
+          />
         </div>
       </div>
 
@@ -44,4 +64,4 @@ function SkillPage() {
   );
 }
 
-export default SkillPage;
+export default SkillsPage;

@@ -1,23 +1,27 @@
 import GetBaseUrl from "../conf";
 
-export default function CreateSkill() {
+export default function CreateSkill({ reloadList }) {
   function onSubmission(event) {
     event.preventDefault();
 
-    var skillName = event.target.elements.skillName.value;
-    console.log(skillName);
+    var name = event.target.elements.name.value;
+    var group = event.target.elements.group.value;
+    console.log(name);
+    console.log(group);
 
-    const apiEndPoint = GetBaseUrl() + "/api/skills";
-    fetch(apiEndPoint, {
+    const apiEndpoint = GetBaseUrl() + "/api/skills/";
+
+    fetch(apiEndpoint, {
       method: "POST",
       body: JSON.stringify({
-        skillName: skillName,
+        name: name,
+        group: group,
       }),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        alert(JSON.stringify(data));
+        reloadList();
       });
   }
   return (
@@ -27,7 +31,11 @@ export default function CreateSkill() {
       <form onSubmit={onSubmission}>
         <div className="mb-3">
           <label className="form-label">Name</label>
-          <input type="text" className="form-control" id="skillName" />
+          <input type="text" className="form-control" id="name" />
+        </div>
+        <div className="mb-3">
+          <label className="form-label">Group</label>
+          <input type="text" className="form-control" id="group" />
         </div>
         <button type="submit" className="btn btn-primary">
           Submit

@@ -30,10 +30,6 @@ export default function User({ id, fullName, email, competence }) {
             {item.skill.name}
           </span>
         ))}
-
-        {/* <span class="badge rounded-pill text-bg-secondary">Python</span>
-        <span class="badge rounded-pill text-bg-success">Rust</span>
-        <span class="badge rounded-pill text-bg-danger">C</span> */}
       </td>
     </tr>
   );

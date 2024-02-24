@@ -1,47 +1,49 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
+import GetBaseUrl from "../conf";
 import Skill from "./skill";
 
-export default function SkillList() {
-
+export default function SkillList({ reloadState, skillListReloadComplete }) {
   const [data, setData] = useState([]);
 
-  function reloadUserList(event) {
+  function handleListRefresh(event) {
     console.log(event);
-    fetch("https://skills.buildfromzero.com/api/users", {
+    const apiEndPoint = GetBaseUrl() + "/api/skills/";
+    fetch(apiEndPoint, {
       method: "GET",
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         console.log(data);
         setData(data);
-        // alert(JSON.stringify(data));
-      })
-  };
+      });
+  }
+
+  useEffect(() => {
+    handleListRefresh(null);
+    skillListReloadComplete();
+  }, [reloadState, skillListReloadComplete]);
 
   return (
     <div>
       <br />
-      <h3>Skill List</h3>
+      <h3>Skills</h3>
       <br />
-      <button type="simpleQuery" className="btn btn-dark" onClick={reloadUserList}>Reload Skill List</button>
+
       <br />
       <table class="table">
         <thead>
           <tr>
             <th scope="col">#ID</th>
             <th scope="col">Name</th>
+            <th scope="col">Group</th>
           </tr>
         </thead>
         <tbody>
-          {
-            data.map((item) => (
-              <Skill id={item.id} fullName={item.name} />
-            ))
-          }
+          {data.map((item) => (
+            <Skill id={item.id} name={item.name} group="group name" />
+          ))}
         </tbody>
       </table>
     </div>
-
-
   );
 }
