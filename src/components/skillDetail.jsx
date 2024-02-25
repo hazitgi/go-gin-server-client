@@ -97,8 +97,10 @@ export default function SkillDetail() {
         </div>
         <div className="mb-3">
           <label className="form-label">Group</label>
-          <select id="group" className="form-control">
-            <option selected>Select.</option>
+          <select id="group" className="form-control" defaultValue={data.id}>
+            <option selected value={data.skillGroup ? data.skillGroup.id : ""}>
+              {data.skillGroup ? data.skillGroup.name : "select"}
+            </option>
             {skillGroups.map((item) => (
               <option value={item.id}>{item.name}</option>
             ))}
