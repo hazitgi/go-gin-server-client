@@ -1,6 +1,23 @@
+import { useEffect } from "react";
+import { useState } from "react";
 import GetBaseUrl from "../conf";
 
 export default function CreateSkill({ reloadList }) {
+  const [skillGroups, setSkillGroups] = useState([]);
+
+  function loadGroupLists(event) {
+    console.log(event);
+    const apiEndPoint = GetBaseUrl() + "/api/skill-groups/";
+    fetch(apiEndPoint, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setSkillGroups(data);
+      });
+  }
+
   function onSubmission(event) {
     event.preventDefault();
 
@@ -24,6 +41,11 @@ export default function CreateSkill({ reloadList }) {
         reloadList();
       });
   }
+
+  useEffect(() => {
+    loadGroupLists(null);
+  }, []);
+
   return (
     <div>
       <h3>Create Skill</h3>
@@ -35,7 +57,16 @@ export default function CreateSkill({ reloadList }) {
         </div>
         <div className="mb-3">
           <label className="form-label">Group</label>
-          <input type="text" className="form-control" id="group" />
+          {/* <input type="text" className="form-control" id="group" /> */}
+          <select id="group" className="form-control">
+            <option selected>Select.</option>
+            {/* <option value="1">Go</option>
+            <option value="2">Python</option> */}
+
+            {skillGroups.map((item) => (
+              <option value={item.id}>{item.name}</option>
+            ))}
+          </select>
         </div>
         <button type="submit" className="btn btn-primary">
           Submit

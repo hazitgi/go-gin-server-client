@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
-import UserDetail from "../components/userDetail";
+import SkillGroupDetail from "../components/skillGroupDetail";
 
-function UserPage() {
+function SkillGroupDetailPage() {
   return (
     <div className="container-fluid">
       <div className="row">
@@ -24,7 +24,7 @@ function UserPage() {
               Home
             </Link>
           </li>
-          <li class="breadcrumb-item active">Users</li>
+          <li class="breadcrumb-item active">Skill Group</li>
         </ol>
       </nav>
 
@@ -32,7 +32,7 @@ function UserPage() {
 
       <div className="row align-items-center">
         <div className="col-4">
-          <UserDetail />
+          <SkillGroupDetail />
         </div>
       </div>
 
@@ -41,4 +41,4 @@ function UserPage() {
   );
 }
 
-export default UserPage;
+export default SkillGroupDetailPage;

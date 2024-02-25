@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 import SkillDetail from "../components/skillDetail";
 
-function SkillDetailPage() {
+export default function SkillDetailPage() {
   return (
     <div className="container-fluid">
       <div className="row">
@@ -39,6 +39,4 @@ function SkillDetailPage() {
       <br />
     </div>
   );
-}
-
-export default SkillDetailPage;
+};

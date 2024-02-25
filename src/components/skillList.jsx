@@ -27,7 +27,7 @@ export default function SkillList({ reloadState, skillListReloadComplete }) {
     <div>
       <br />
       <h3>Skills</h3>
-      <br />
+      <hr />
 
       <br />
       <table class="table">

@@ -4,7 +4,7 @@ import { useState } from "react";
 import CreateSkillGroup from "../components/skillGroupCreate";
 import SkillGroupList from "../components/skillGroupList";
 
-export default function SkillGroupPage() {
+export default function SkillGroupCreateListPage() {
   const [reloadListState, setReload] = useState(false);
 
   function handleListReload() {

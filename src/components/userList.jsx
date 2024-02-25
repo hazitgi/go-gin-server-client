@@ -27,7 +27,7 @@ export default function UserList({ reloadState, userListReloadComplete }) {
     <div>
       <br />
       <h3>Users</h3>
-      <br />
+      <hr />
 
       <br />
       <table class="table">

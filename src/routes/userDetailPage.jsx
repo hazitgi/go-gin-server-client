@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
-import SkillDetail from "../components/skillDetail";
-import SkillGroupDetail from "../components/skillGroupDetail";
-import SkillGroupPage from "./skillGroups";
+import UserDetail from "../components/userDetail";
 
-function SkillGroupDetailPage() {
+export default function UserDetailPage() {
   return (
     <div className="container-fluid">
       <div className="row">
@@ -26,7 +24,7 @@ function SkillGroupDetailPage() {
               Home
             </Link>
           </li>
-          <li class="breadcrumb-item active">Skill Group</li>
+          <li class="breadcrumb-item active">Users</li>
         </ol>
       </nav>
 
@@ -34,13 +32,11 @@ function SkillGroupDetailPage() {
 
       <div className="row align-items-center">
         <div className="col-4">
-          <SkillGroupDetail />
+          <UserDetail />
         </div>
       </div>
 
       <br />
     </div>
   );
-}
-
-export default SkillGroupDetailPage;
+};

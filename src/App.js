@@ -3,35 +3,35 @@ import "@floating-ui/react";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Home from "./routes/home";
+import HomePage from "./routes/homePage";
 import UserLogin from "./routes/login";
 import ErrorPage from "./routes/error-pages";
-import UserPage from "./routes/users";
-import SkillPage from "./routes/skills";
-import UserDetail from "./routes/userDetail";
-import SkillDetailPage from "./routes/skillDetail";
-import SkillGroupPage from "./routes/skillGroups";
-import SkillGroupDetailPage from "./routes/skillGroupDetail";
+import UserCreateListPage from "./routes/usersCreateListPage";
+import SkillsCreateListPage from "./routes/skillsCreateListPage";
+import UserDetailPage from "./routes/userDetailPage";
+import SkillDetailPage from "./routes/skillDetailPage";
+import SkillGroupCreateListPage from "./routes/skillGroupsListCreate";
+import SkillGroupDetailPage from "./routes/skillGroupDetailPage";
 
 const router = createBrowserRouter([
   {
     path: "/home",
-    element: <Home />,
+    element: <HomePage />,
     errorElement: <ErrorPage />,
   },
   {
     path: "/users",
-    element: <UserPage />,
+    element: <UserCreateListPage />,
     errorElement: <ErrorPage />,
   },
   {
     path: "/users/:userId/",
-    element: <UserDetail />,
+    element: <UserDetailPage />,
     errorElement: <ErrorPage />,
   },
   {
     path: "/skills",
-    element: <SkillPage />,
+    element: <SkillsCreateListPage />,
     errorElement: <ErrorPage />,
   },
   {
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/skill-groups",
-    element: <SkillGroupPage />,
+    element: <SkillGroupCreateListPage />,
     errorElement: <ErrorPage />,
   },
   {

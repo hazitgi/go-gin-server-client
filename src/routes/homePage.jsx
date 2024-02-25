@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from "../components/navbar";
 
-function Home() {
+export default function HomePage() {
   return (
     <div className="container-fluid">
       <div className="row">
@@ -50,6 +50,4 @@ function Home() {
       </div>
     </div>
   );
-}
-
-export default Home;
+};

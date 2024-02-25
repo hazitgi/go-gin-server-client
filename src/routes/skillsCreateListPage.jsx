@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import SkillList from "../components/skillList";
 
-function SkillsPage() {
+export default function SkillsCreateListPage() {
   const [reloadSkillListState, setSkillReload] = useState(false);
 
   function handleSkillListReload() {
@@ -62,6 +62,4 @@ function SkillsPage() {
       <br />
     </div>
   );
-}
-
-export default SkillsPage;
+};

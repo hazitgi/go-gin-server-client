@@ -27,7 +27,7 @@ export default function SkillGroupList({ reloadState, listReloadComplete }) {
     <div>
       <br />
       <h3>Skill Groups</h3>
-      <br />
+      <hr />
 
       <table class="table">
         <thead>

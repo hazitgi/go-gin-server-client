@@ -4,7 +4,7 @@ import CreateUser from "../components/userCreate";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function UserPage() {
+export default function UserCreateListPage() {
   const [reloadUserListState, setUserReload] = useState(false);
 
   function handleUserListReload() {
@@ -62,6 +62,4 @@ function UserPage() {
       <br />
     </div>
   );
-}
-
-export default UserPage;
+};
