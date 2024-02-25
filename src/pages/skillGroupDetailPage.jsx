@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import BreadCrumb from "../components/breadcrumb";
 import Navbar from "../components/navbar";
 import SkillGroupDetail from "../components/skillGroupDetail";
 
@@ -13,20 +13,7 @@ function SkillGroupDetailPage() {
 
       <br />
 
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <Link
-              to={`/home`}
-              class="breadcrumb-item active"
-              aria-current="page"
-            >
-              Home
-            </Link>
-          </li>
-          <li class="breadcrumb-item active">Skill Group</li>
-        </ol>
-      </nav>
+      <BreadCrumb subPage="Skill Group" />
 
       <br />
 

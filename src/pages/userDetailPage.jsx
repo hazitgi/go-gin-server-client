@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import BreadCrumb from "../components/breadcrumb";
 import Navbar from "../components/navbar";
 import UserDetail from "../components/userDetail";
 
@@ -12,22 +12,7 @@ export default function UserDetailPage() {
       </div>
 
       <br />
-
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <Link
-              to={`/home`}
-              class="breadcrumb-item active"
-              aria-current="page"
-            >
-              Home
-            </Link>
-          </li>
-          <li class="breadcrumb-item active">Users</li>
-        </ol>
-      </nav>
-
+      <BreadCrumb subPage="Users" />
       <br />
 
       <div className="row align-items-center">
@@ -39,4 +24,4 @@ export default function UserDetailPage() {
       <br />
     </div>
   );
-};
+}

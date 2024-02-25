@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import BreadCrumb from "../components/breadcrumb";
 import Navbar from "../components/navbar";
 import SkillDetail from "../components/skillDetail";
 
@@ -13,20 +13,7 @@ export default function SkillDetailPage() {
 
       <br />
 
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <Link
-              to={`/home`}
-              class="breadcrumb-item active"
-              aria-current="page"
-            >
-              Home
-            </Link>
-          </li>
-          <li class="breadcrumb-item active">Skills</li>
-        </ol>
-      </nav>
+      <BreadCrumb subPage="Skill Details" />
 
       <br />
 
@@ -39,4 +26,4 @@ export default function SkillDetailPage() {
       <br />
     </div>
   );
-};
+}

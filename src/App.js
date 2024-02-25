@@ -3,15 +3,15 @@ import "@floating-ui/react";
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import HomePage from "./routes/homePage";
-import UserLogin from "./routes/login";
-import ErrorPage from "./routes/error-pages";
-import UserCreateListPage from "./routes/usersCreateListPage";
-import SkillsCreateListPage from "./routes/skillsCreateListPage";
-import UserDetailPage from "./routes/userDetailPage";
-import SkillDetailPage from "./routes/skillDetailPage";
-import SkillGroupCreateListPage from "./routes/skillGroupsListCreate";
-import SkillGroupDetailPage from "./routes/skillGroupDetailPage";
+import HomePage from "./pages/homePage";
+import UserLogin from "./pages/login";
+import ErrorPage from "./pages/error-pages";
+import UserCreateListPage from "./pages/userCreateListPage";
+import SkillsCreateListPage from "./pages/skillCreateListPage";
+import UserDetailPage from "./pages/userDetailPage";
+import SkillDetailPage from "./pages/skillDetailPage";
+import SkillGroupCreateListPage from "./pages/skillGroupsListCreate";
+import SkillGroupDetailPage from "./pages/skillGroupDetailPage";
 
 const router = createBrowserRouter([
   {

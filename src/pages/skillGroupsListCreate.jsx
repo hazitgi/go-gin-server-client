@@ -1,8 +1,8 @@
 import Navbar from "../components/navbar";
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import CreateSkillGroup from "../components/skillGroupCreate";
 import SkillGroupList from "../components/skillGroupList";
+import BreadCrumb from "../components/breadcrumb";
 
 export default function SkillGroupCreateListPage() {
   const [reloadListState, setReload] = useState(false);
@@ -25,20 +25,7 @@ export default function SkillGroupCreateListPage() {
 
       <br />
 
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <Link
-              to={`/home`}
-              class="breadcrumb-item active"
-              aria-current="page"
-            >
-              Home
-            </Link>
-          </li>
-          <li class="breadcrumb-item active">Skill Groups</li>
-        </ol>
-      </nav>
+      <BreadCrumb subPage="Skill Groups" />
 
       <br />
 

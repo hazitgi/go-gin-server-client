@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import BreadCrumb from "../components/breadcrumb";
 import Navbar from "../components/navbar";
 
 export default function HomePage() {
@@ -12,13 +13,7 @@ export default function HomePage() {
 
       <br />
 
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <Link to={`/home`} class="breadcrumb-item active" aria-current="page">
-            Home
-          </Link>
-        </ol>
-      </nav>
+      <BreadCrumb subPage="Dashboard" />
 
       <br />
       <br />
@@ -50,4 +45,4 @@ export default function HomePage() {
       </div>
     </div>
   );
-};
+}
