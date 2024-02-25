@@ -57,12 +57,8 @@ export default function CreateSkill({ reloadList }) {
         </div>
         <div className="mb-3">
           <label className="form-label">Group</label>
-          {/* <input type="text" className="form-control" id="group" /> */}
           <select id="group" className="form-control">
             <option selected>Select.</option>
-            {/* <option value="1">Go</option>
-            <option value="2">Python</option> */}
-
             {skillGroups.map((item) => (
               <option value={item.id}>{item.name}</option>
             ))}

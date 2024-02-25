@@ -40,7 +40,7 @@ export default function SkillList({ reloadState, skillListReloadComplete }) {
         </thead>
         <tbody>
           {data.map((item) => (
-            <Skill id={item.id} name={item.name} group="group name" />
+            <Skill id={item.id} name={item.name} group={item.skillGroup.name} />
           ))}
         </tbody>
       </table>

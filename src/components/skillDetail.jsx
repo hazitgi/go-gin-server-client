@@ -7,6 +7,20 @@ import GetBaseUrl from "../conf";
 export default function SkillDetail() {
   const [data, setData] = useState([]);
   const { skillId } = useParams();
+  const [skillGroups, setSkillGroups] = useState([]);
+
+  function loadGroupLists(event) {
+    console.log(event);
+    const apiEndPoint = GetBaseUrl() + "/api/skill-groups/";
+    fetch(apiEndPoint, {
+      method: "GET",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setSkillGroups(data);
+      });
+  }
   const apiEndPoint = GetBaseUrl() + "/api/skills/" + skillId + "/";
 
   const navigate = useNavigate();
@@ -62,6 +76,8 @@ export default function SkillDetail() {
         });
     }
 
+    loadGroupLists(null);
+
     getSkillDetails();
   }, [apiEndPoint]);
 
@@ -81,12 +97,12 @@ export default function SkillDetail() {
         </div>
         <div className="mb-3">
           <label className="form-label">Group</label>
-          <input
-            type="text"
-            className="form-control"
-            id="group"
-            defaultValue={data.group}
-          />
+          <select id="group" className="form-control">
+            <option selected>Select.</option>
+            {skillGroups.map((item) => (
+              <option value={item.id}>{item.name}</option>
+            ))}
+          </select>
         </div>
         <button type="submit" className="btn btn-primary">
           Update
