@@ -3,6 +3,9 @@ import CreateSkill from "../components/skillCreate";
 import { useState } from "react";
 import SkillList from "../components/skillList";
 import BreadCrumb from "../components/breadcrumb";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export default function SkillsCreateListPage() {
   const [reloadSkillListState, setSkillReload] = useState(false);
@@ -16,37 +19,30 @@ export default function SkillsCreateListPage() {
   }
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col gap-3">
+    <Container>
+      <Row>
+        <Col>
           <GlobalNavbar />
-        </div>
-      </div>
-
-      <br />
-
-      <BreadCrumb subPage="Skills" />
-
-      <br />
-
-      <div className="row align-items-center">
-        <div className="col-4">
+        </Col>
+        <Col>
+          <BreadCrumb subPage="Skill Groups" />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
           <CreateSkill reloadList={handleSkillListReload} />
-        </div>
-      </div>
-
-      <br />
-
-      <div className="row">
-        <div className="col">
-          <SkillList
-            reloadState={reloadSkillListState}
-            skillListReloadComplete={reloadCompleted}
-          />
-        </div>
-      </div>
-
-      <br />
-    </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Col>
+            <SkillList
+              reloadState={reloadSkillListState}
+              skillListReloadComplete={reloadCompleted}
+            />
+          </Col>
+        </Col>
+      </Row>
+    </Container>
   );
 }
