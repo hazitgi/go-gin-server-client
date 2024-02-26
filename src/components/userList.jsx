@@ -25,11 +25,6 @@ export default function UserList({ reloadState, userListReloadComplete }) {
 
   return (
     <div>
-      <br />
-      <h3>Users</h3>
-      <hr />
-
-      <br />
       <table class="table">
         <thead>
           <tr>

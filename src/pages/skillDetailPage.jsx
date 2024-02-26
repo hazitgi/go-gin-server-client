@@ -6,7 +6,7 @@ import PageHeadder from "../components/pageHeader";
 
 export default function SkillDetailPage() {
   return (
-    <Container>
+    <Container fluid>
       <PageHeadder pageName="Skill Group Detail"></PageHeadder>
       <Row>
         <Col>

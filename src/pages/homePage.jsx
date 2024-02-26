@@ -1,48 +1,36 @@
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import PageHeadder from "../components/pageHeader";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-import BreadCrumb from "../components/breadcrumb";
-import GlobalNavbar from "../components/navbar";
 
 export default function HomePage() {
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col gap-3">
-          <GlobalNavbar />
-        </div>
-      </div>
-
-      <br />
-
-      <BreadCrumb subPage="Dashboard" />
-
-      <br />
-      <br />
-
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">50 Total Registered Users</h5>
-              <p class="card-text">Go to the User page for managing skills</p>
-
-              <Link to={`/users`} class="btn btn-primary">
-                Users
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-3">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">10 Total Skills</h5>
-              <p class="card-text">go to the skills page for managing skills</p>
-              <Link to={`/skills`} class="btn btn-primary">
-                Manage Skills
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Container fluid>
+      <PageHeadder pageName="Dashboard"> </PageHeadder>
+      <Row>
+        <Col>
+          <Col>
+            <Card style={{ width: "18rem" }}>
+              <Card.Body>
+                <Card.Title>Users</Card.Title>
+                <Card.Text>
+                  Create, Update or delete users from the user management page.
+                </Card.Text>
+                <Link
+                  to={`/users`}
+                  class="breadcrumb-item active"
+                  aria-current="page"
+                >
+                  <Button variant="primary">Manage Users</Button>
+                </Link>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Col>
+      </Row>
+    </Container>
   );
 }

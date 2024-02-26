@@ -19,15 +19,20 @@ export default function UserCreateListPage() {
   }
 
   return (
-    <Container>
+    <Container fluid>
       <PageHeadder pageName="Users"> </PageHeadder>
+
       <Row>
         <Col>
-          <CreateUser reloadUserList={handleUserListReload} />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
+          <Col>
+            <br />
+            <CreateUser reloadUserList={handleUserListReload} />
+            <br />
+            <br />
+
+            <h3>Users</h3>
+            <hr />
+          </Col>
           <Col>
             <UserList
               reloadState={reloadUserListState}

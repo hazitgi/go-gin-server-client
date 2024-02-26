@@ -18,7 +18,7 @@ export default function SkillsCreateListPage() {
   }
 
   return (
-    <Container>
+    <Container fluid>
       <PageHeadder pageName="Skills"> </PageHeadder>
       <Row>
         <Col>
