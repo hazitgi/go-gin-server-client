@@ -1,21 +1,13 @@
-import BreadCrumb from "../components/breadcrumb";
-import GlobalNavbar from "../components/navbar";
 import UserDetail from "../components/userDetail";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import PageHeadder from "../components/pageHeader";
 
 export default function UserDetailPage() {
   return (
     <Container>
-      <Row>
-        <Col>
-          <GlobalNavbar />
-        </Col>
-        <Col>
-          <BreadCrumb subPage="Users" />
-        </Col>
-      </Row>
+      <PageHeadder pageName="User Detail"></PageHeadder>
       <Row>
         <Col>
           <UserDetail />

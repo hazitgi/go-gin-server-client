@@ -65,7 +65,7 @@ export default function SkillGroupDetail() {
 
   return (
     <div>
-      <h3>Skill Details : {data.name}</h3>
+      <h3>Skill Group : {data.name}</h3>
       <br />
       <form onSubmit={updateSkill}>
         <div className="mb-3">

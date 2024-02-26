@@ -1,11 +1,10 @@
-import GlobalNavbar from "../components/navbar";
 import CreateSkill from "../components/skillCreate";
 import { useState } from "react";
 import SkillList from "../components/skillList";
-import BreadCrumb from "../components/breadcrumb";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import PageHeadder from "../components/pageHeader";
 
 export default function SkillsCreateListPage() {
   const [reloadSkillListState, setSkillReload] = useState(false);
@@ -20,14 +19,7 @@ export default function SkillsCreateListPage() {
 
   return (
     <Container>
-      <Row>
-        <Col>
-          <GlobalNavbar />
-        </Col>
-        <Col>
-          <BreadCrumb subPage="Skill Groups" />
-        </Col>
-      </Row>
+      <PageHeadder pageName="Skills"> </PageHeadder>
       <Row>
         <Col>
           <CreateSkill reloadList={handleSkillListReload} />

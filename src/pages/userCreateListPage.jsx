@@ -1,7 +1,6 @@
 import UserList from "../components/userList";
-import GlobalNavbar from "../components/navbar";
 import CreateUser from "../components/userCreate";
-import BreadCrumb from "../components/breadcrumb";
+import PageHeadder from "../components/pageHeader";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -21,14 +20,7 @@ export default function UserCreateListPage() {
 
   return (
     <Container>
-      <Row>
-        <Col>
-          <GlobalNavbar />
-        </Col>
-        <Col>
-          <BreadCrumb subPage="Users" />
-        </Col>
-      </Row>
+      <PageHeadder pageName="Users"> </PageHeadder>
       <Row>
         <Col>
           <CreateUser reloadUserList={handleUserListReload} />
