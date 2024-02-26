@@ -1,29 +1,26 @@
 import BreadCrumb from "../components/breadcrumb";
 import GlobalNavbar from "../components/navbar";
 import SkillDetail from "../components/skillDetail";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 export default function SkillDetailPage() {
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col gap-3">
+    <Container>
+      <Row>
+        <Col>
           <GlobalNavbar />
-        </div>
-      </div>
-
-      <br />
-
-      <BreadCrumb subPage="Skill Details" />
-
-      <br />
-
-      <div className="row align-items-center">
-        <div className="col-4">
+        </Col>
+        <Col>
+          <BreadCrumb subPage="Skill update" />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
           <SkillDetail />
-        </div>
-      </div>
-
-      <br />
-    </div>
+        </Col>
+      </Row>
+    </Container>
   );
 }
