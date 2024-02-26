@@ -1,8 +1,16 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import GetBaseUrl from "../conf";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 export default function CreateSkill({ reloadList }) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const [skillGroups, setSkillGroups] = useState([]);
 
   function loadGroupLists(event) {
@@ -39,6 +47,7 @@ export default function CreateSkill({ reloadList }) {
       .then((data) => {
         console.log(data);
         reloadList();
+        handleClose();
       });
   }
 
@@ -47,27 +56,63 @@ export default function CreateSkill({ reloadList }) {
   }, []);
 
   return (
-    <div>
-      <h3>Create Skill</h3>
-      <br />
-      <form onSubmit={onSubmission}>
-        <div className="mb-3">
-          <label className="form-label">Name</label>
-          <input type="text" className="form-control" id="name" />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Group</label>
-          <select id="group" className="form-control">
-            <option selected>Select.</option>
-            {skillGroups.map((item) => (
-              <option value={item.id}>{item.name}</option>
-            ))}
-          </select>
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-    </div>
+    <>
+      <Button variant="outline-success" onClick={handleShow}>
+        Create Skill
+      </Button>
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Create new Skill</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={onSubmission}>
+            <Form.Group className="mb-3" controlId="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" placeholder="Enter skill name" />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="group">
+              <Form.Select aria-label="Default select example">
+                <option id="group">Select Group</option>
+                {skillGroups.map((item) => (
+                  <option value={item.id}>{item.name}</option>
+                ))}
+              </Form.Select>
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Create Skill
+            </Button>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+
+    // <div>
+    //   <h3>Create Skill</h3>
+    //   <br />
+    //   <form onSubmit={onSubmission}>
+    //     <div className="mb-3">
+    //       <label className="form-label">Name</label>
+    //       <input type="text" className="form-control" id="name" />
+    //     </div>
+    //     <div className="mb-3">
+    //       <label className="form-label">Group</label>
+    //       <select id="group" className="form-control">
+    //         <option selected>Select.</option>
+    //         {skillGroups.map((item) => (
+    //           <option value={item.id}>{item.name}</option>
+    //         ))}
+    //       </select>
+    //     </div>
+    //     <button type="submit" className="btn btn-primary">
+    //       Submit
+    //     </button>
+    //   </form>
+    // </div>
   );
 }

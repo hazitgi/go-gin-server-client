@@ -37,7 +37,7 @@ export default function CreateUser({ reloadUserList }) {
   return (
     <>
       <Button variant="outline-success" onClick={handleShow}>
-        New User
+        Create User
       </Button>
 
       <Modal show={show} onHide={handleClose}>

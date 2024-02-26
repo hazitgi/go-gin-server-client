@@ -41,7 +41,8 @@ export default function SkillDetail() {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        alert(JSON.stringify(data));
+        // alert(JSON.stringify(data));
+        navigate("/skills");
       });
   }
 
@@ -57,7 +58,7 @@ export default function SkillDetail() {
       })
       .then((data) => {
         console.log(data);
-        alert(JSON.stringify(data));
+        // alert(JSON.stringify(data));
         navigate("/skills");
       });
   }
