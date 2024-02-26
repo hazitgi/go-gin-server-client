@@ -1,5 +1,5 @@
 import BreadCrumb from "../components/breadcrumb";
-import Navbar from "../components/navbar";
+import GlobalNavbar from "../components/navbar";
 import SkillDetail from "../components/skillDetail";
 
 export default function SkillDetailPage() {
@@ -7,7 +7,7 @@ export default function SkillDetailPage() {
     <div className="container-fluid">
       <div className="row">
         <div className="col gap-3">
-          <Navbar />
+          <GlobalNavbar />
         </div>
       </div>
 

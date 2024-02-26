@@ -1,4 +1,4 @@
-import Navbar from "../components/navbar";
+import GlobalNavbar from "../components/navbar";
 import CreateSkill from "../components/skillCreate";
 import { useState } from "react";
 import SkillList from "../components/skillList";
@@ -19,7 +19,7 @@ export default function SkillsCreateListPage() {
     <div className="container-fluid">
       <div className="row">
         <div className="col gap-3">
-          <Navbar />
+          <GlobalNavbar />
         </div>
       </div>
 

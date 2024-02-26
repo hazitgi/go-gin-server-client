@@ -1,66 +1,28 @@
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
-export default function Navbar() {
+
+export default function GlobalNavbar() {
   return (
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <Link to={`/home`} class="navbar-brand">
-          Skill Map
+    <Navbar bg="light" data-bs-theme="light">
+      <Navbar.Brand href="#home">BFZ</Navbar.Brand>
+      <Nav className="me-auto">
+        <Link to={`/home`} class="nav-link">
+          Home
         </Link>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-collapse collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mb-lg-0 mb-2 me-auto">
-            <li class="nav-item">
-              <Link to={`/home`} class="nav-link">
-                Home
-              </Link>
-            </li>
-            <li class="nav-item">
-              <Link to={`/users`} class="nav-link">
-                Users
-              </Link>
-            </li>
-
-            <li class="nav-item">
-              <Link to={`/skills`} class="nav-link">
-                Skills
-              </Link>
-            </li>
-
-            <li class="nav-item">
-              <Link to={`/skill-groups`} class="nav-link">
-                Skill Groups
-              </Link>
-            </li>
-
-            <li class="nav-item">
-              <Link to={`/login`} class="nav-link">
-                Logout
-              </Link>
-            </li>
-          </ul>
-          <form class="d-flex" role="search">
-            <input
-              class="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <button class="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
-        </div>
-      </div>
-    </nav>
+        <Link to={`/users`} class="nav-link">
+          Users
+        </Link>
+        <Link to={`/skills`} class="nav-link">
+          Skills
+        </Link>
+        <Link to={`/skill-groups`} class="nav-link">
+          Groups
+        </Link>
+        <Link to={`/login`} class="nav-link">
+          Logout
+        </Link>
+      </Nav>
+    </Navbar>
   );
 }

@@ -1,5 +1,5 @@
 import { Link, useRouteError } from "react-router-dom";
-import Navbar from "../components/navbar";
+import GlobalNavbar from "../components/navbar";
 
 export default function ErrorPage() {
   const error = useRouteError();
@@ -9,7 +9,7 @@ export default function ErrorPage() {
     <div className="container-fluid">
       <div className="row">
         <div className="col gap-3">
-          <Navbar />
+          <GlobalNavbar />
         </div>
       </div>
 

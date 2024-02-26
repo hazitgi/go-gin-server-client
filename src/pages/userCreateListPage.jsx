@@ -1,7 +1,11 @@
 import UserList from "../components/userList";
-import Navbar from "../components/navbar";
+import GlobalNavbar from "../components/navbar";
 import CreateUser from "../components/userCreate";
 import BreadCrumb from "../components/breadcrumb";
+
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { useState } from "react";
 
 export default function UserCreateListPage() {
@@ -16,35 +20,30 @@ export default function UserCreateListPage() {
   }
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col gap-3">
-          <Navbar />
-        </div>
-      </div>
-
-      <br />
-      <BreadCrumb subPage="Users" />
-      <br />
-
-      <div className="row align-items-center">
-        <div className="col-4">
+    <Container>
+      <Row>
+        <Col>
+          <GlobalNavbar />
+        </Col>
+        <Col>
+          <BreadCrumb subPage="Users" />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
           <CreateUser reloadUserList={handleUserListReload} />
-        </div>
-      </div>
-
-      <br />
-
-      <div className="row">
-        <div className="col">
-          <UserList
-            reloadState={reloadUserListState}
-            userListReloadComplete={reloadCompleted}
-          />
-        </div>
-      </div>
-
-      <br />
-    </div>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Col>
+            <UserList
+              reloadState={reloadUserListState}
+              userListReloadComplete={reloadCompleted}
+            />
+          </Col>
+        </Col>
+      </Row>
+    </Container>
   );
 }

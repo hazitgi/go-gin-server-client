@@ -1,4 +1,4 @@
-import Navbar from "../components/navbar";
+import GlobalNavbar from "../components/navbar";
 import { useState } from "react";
 import CreateSkillGroup from "../components/skillGroupCreate";
 import SkillGroupList from "../components/skillGroupList";
@@ -19,7 +19,7 @@ export default function SkillGroupCreateListPage() {
     <div className="container-fluid">
       <div className="row">
         <div className="col gap-3">
-          <Navbar />
+          <GlobalNavbar />
         </div>
       </div>
 

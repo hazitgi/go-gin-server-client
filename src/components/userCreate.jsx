@@ -1,4 +1,6 @@
 import GetBaseUrl from "../conf";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 export default function CreateUser({ reloadUserList }) {
   function onSubmission(event) {
@@ -21,28 +23,26 @@ export default function CreateUser({ reloadUserList }) {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        // update user list
         reloadUserList();
-        // alert(JSON.stringify(data));
       });
   }
   return (
     <div>
       <h3>Create User</h3>
       <br />
-      <form onSubmit={onSubmission}>
-        <div className="mb-3">
-          <label className="form-label">Full Name</label>
-          <input type="text" className="form-control" id="fullName" />
-        </div>
-        <div className="mb-3">
-          <label className="form-label">Email</label>
-          <input type="text" className="form-control" id="email" />
-        </div>
-        <button type="submit" className="btn btn-primary">
+      <Form onSubmit={onSubmission}>
+        <Form.Group className="mb-3" controlId="fullName">
+          <Form.Label>Full Name</Form.Label>
+          <Form.Control type="text" placeholder="Enter fullname" />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control type="email" placeholder="Enter email" />
+        </Form.Group>
+        <Button variant="primary" type="submit">
           Submit
-        </button>
-      </form>
+        </Button>
+      </Form>
     </div>
   );
 }
