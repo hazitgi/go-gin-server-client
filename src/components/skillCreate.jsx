@@ -94,28 +94,5 @@ export default function CreateSkill({ reloadList }) {
         </Modal.Footer>
       </Modal>
     </>
-
-    // <div>
-    //   <h3>Create Skill</h3>
-    //   <br />
-    //   <form onSubmit={onSubmission}>
-    //     <div className="mb-3">
-    //       <label className="form-label">Name</label>
-    //       <input type="text" className="form-control" id="name" />
-    //     </div>
-    //     <div className="mb-3">
-    //       <label className="form-label">Group</label>
-    //       <select id="group" className="form-control">
-    //         <option selected>Select.</option>
-    //         {skillGroups.map((item) => (
-    //           <option value={item.id}>{item.name}</option>
-    //         ))}
-    //       </select>
-    //     </div>
-    //     <button type="submit" className="btn btn-primary">
-    //       Submit
-    //     </button>
-    //   </form>
-    // </div>
   );
 }

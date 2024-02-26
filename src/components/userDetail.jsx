@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import GetBaseUrl from "../conf";
 
-export default function UserDetail() {
+export default function UserDetail(s) {
   const { userId } = useParams();
 
   const [data, setData] = useState([]);
@@ -72,8 +72,8 @@ export default function UserDetail() {
 
   return (
     <div>
-      <h3>User Details : {data.fullName}</h3>
-      <br />
+      <h3>{data.fullName}</h3>
+      <hr />
       <form onSubmit={updateUser}>
         <div className="mb-3">
           <label className="form-label">Full Name</label>
