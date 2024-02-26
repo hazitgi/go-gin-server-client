@@ -1,6 +1,15 @@
 import GetBaseUrl from "../conf";
+import Form from "react-bootstrap/Form";
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 export default function CreateSkillGroup({ reloadList }) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   function onSubmission(event) {
     event.preventDefault();
 
@@ -18,21 +27,34 @@ export default function CreateSkillGroup({ reloadList }) {
       .then((data) => {
         console.log(data);
         reloadList();
+        handleClose();
       });
   }
   return (
-    <div>
-      <h3>Create Skill Group</h3>
+    <>
       <br />
-      <form onSubmit={onSubmission}>
-        <div className="mb-3">
-          <label className="form-label">Name</label>
-          <input type="text" className="form-control" id="name" />
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-    </div>
+      <Button variant="outline-success" onClick={handleShow}>
+        Create Group
+      </Button>
+      <br />
+      <br />
+
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Create new user</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={onSubmission}>
+            <Form.Group className="mb-3" controlId="name">
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" placeholder="Enter group name" />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Create Group
+            </Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
+    </>
   );
 }

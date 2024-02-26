@@ -36,9 +36,12 @@ export default function CreateUser({ reloadUserList }) {
   }
   return (
     <>
+      <br />
       <Button variant="outline-success" onClick={handleShow}>
         Create User
       </Button>
+      <br />
+      <br />
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

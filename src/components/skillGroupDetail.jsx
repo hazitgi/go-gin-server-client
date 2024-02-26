@@ -25,7 +25,8 @@ export default function SkillGroupDetail() {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        alert(JSON.stringify(data));
+        // alert(JSON.stringify(data));
+        navigate("/skill-groups");
       });
   }
 
@@ -41,7 +42,7 @@ export default function SkillGroupDetail() {
       })
       .then((data) => {
         console.log(data);
-        alert(JSON.stringify(data));
+        // alert(JSON.stringify(data));
         navigate("/skill-groups");
       });
   }

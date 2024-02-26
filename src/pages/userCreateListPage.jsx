@@ -25,11 +25,7 @@ export default function UserCreateListPage() {
       <Row>
         <Col>
           <Col>
-            <br />
             <CreateUser reloadUserList={handleUserListReload} />
-            <br />
-            <br />
-
             <h3>Users</h3>
             <hr />
           </Col>

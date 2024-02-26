@@ -57,9 +57,12 @@ export default function CreateSkill({ reloadList }) {
 
   return (
     <>
+      <br />
       <Button variant="outline-success" onClick={handleShow}>
         Create Skill
       </Button>
+      <br />
+      <br />
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
