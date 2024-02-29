@@ -5,7 +5,7 @@ export default function CompetenceComponent({ id, skill, skillGroup, rank }) {
       <td>{skill}</td>
       <td>{rank}</td>
       <td>{skillGroup}</td>
-      <td>@mdo</td>
+      <td>Edit</td>
     </tr>
   );
 }
