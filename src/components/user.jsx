@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function User({ id, fullName, email, competence }) {
+  console.log("User: ", id, fullName, email, competence);
   function GetStyle(rank) {
     if (rank === 1) {
       return "text-bg-danger";
@@ -25,8 +26,8 @@ export default function User({ id, fullName, email, competence }) {
       </td>
       <td>{email}</td>
       <td>
-        {competence.map((item) => (
-          <span class={`badge rounded-pill ${GetStyle(item.rank)}`}>
+        {competence && competence.map((item) => (
+          <span className={`badge rounded-pill ${GetStyle(item.rank)}`}>
             {item.skill.name}
           </span>
         ))}

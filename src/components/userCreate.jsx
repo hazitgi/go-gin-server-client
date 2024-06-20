@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import axiosInstance from "../api";
 
 export default function CreateUser({ reloadUserList }) {
   const [show, setShow] = useState(false);
@@ -19,16 +20,17 @@ export default function CreateUser({ reloadUserList }) {
     console.log(email);
 
     const apiEndpoint = GetBaseUrl() + "/api/users/";
+    axiosInstance
+      .post(
+        "/api/users",
+        JSON.stringify({
+          fullName: fullName,
+          email: email,
+        })
+      )
+      .then((response) => {
+        const { data } = response?.["data"];
 
-    fetch(apiEndpoint, {
-      method: "POST",
-      body: JSON.stringify({
-        fullName: fullName,
-        email: email,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
         console.log(data);
         reloadUserList();
         handleClose();

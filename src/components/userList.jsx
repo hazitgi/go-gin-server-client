@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GetBaseUrl from "../conf";
 import User from "./user";
+import axiosInstance from "../api";
 
 export default function UserList({ reloadState, userListReloadComplete }) {
   const [data, setData] = useState([]);
@@ -8,14 +9,14 @@ export default function UserList({ reloadState, userListReloadComplete }) {
   function handleUserListRefresh(event) {
     console.log(event);
     const apiEndPoint = GetBaseUrl() + "/api/users/";
-    fetch(apiEndPoint, {
+    axiosInstance({
+      url: "/api/users",
       method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setData(data);
-      });
+    }).then((response) => {
+      const { data } = response?.["data"];
+      console.log(data, ">>>>>>>>>>>>>>>");
+      setData(data);
+    });
   }
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function UserList({ reloadState, userListReloadComplete }) {
 
   return (
     <div>
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
             <th scope="col">#ID</th>
@@ -35,14 +36,16 @@ export default function UserList({ reloadState, userListReloadComplete }) {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
-            <User
-              id={item.id}
-              fullName={item.fullName}
-              email={item.email}
-              competence={item.competence}
-            />
-          ))}
+          {data &&
+            data.map((item) => (
+              <User
+                key={item.id}
+                id={item.id}
+                fullName={item.fullName}
+                email={item.email}
+                competence={item.competence}
+              />
+            ))}
         </tbody>
       </table>
     </div>

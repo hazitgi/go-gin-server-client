@@ -4,6 +4,7 @@ import GetBaseUrl from "../conf";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import axiosInstance from "../api";
 
 export default function CreateSkill({ reloadList }) {
   const [show, setShow] = useState(false);
@@ -15,15 +16,11 @@ export default function CreateSkill({ reloadList }) {
 
   function loadGroupLists(event) {
     console.log(event);
-    const apiEndPoint = GetBaseUrl() + "/api/skill-groups/";
-    fetch(apiEndPoint, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setSkillGroups(data);
-      });
+    axiosInstance.get("/api/skill-groups").then((response) => {
+      const { data } = response?.["data"];
+      console.log(data);
+      setSkillGroups(data);
+    });
   }
 
   function onSubmission(event) {
@@ -34,17 +31,16 @@ export default function CreateSkill({ reloadList }) {
     console.log(name);
     console.log(group);
 
-    const apiEndpoint = GetBaseUrl() + "/api/skills/";
-
-    fetch(apiEndpoint, {
-      method: "POST",
-      body: JSON.stringify({
-        name: name,
-        group: group,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
+    axiosInstance
+      .post(
+        "/api/skills",
+        JSON.stringify({
+          name: name,
+          group: group,
+        })
+      )
+      .then((response) => {
+        const { data } = response?.["data"];
         console.log(data);
         reloadList();
         handleClose();
@@ -77,9 +73,10 @@ export default function CreateSkill({ reloadList }) {
             <Form.Group className="mb-3" controlId="group">
               <Form.Select aria-label="Default select example">
                 <option id="group">Select Group</option>
-                {skillGroups.map((item) => (
-                  <option value={item.id}>{item.name}</option>
-                ))}
+                {skillGroups &&
+                  skillGroups.map((item) => (
+                    <option value={item.id}>{item.name}</option>
+                  ))}
               </Form.Select>
             </Form.Group>
             <Button variant="primary" type="submit">

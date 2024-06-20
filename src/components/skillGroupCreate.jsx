@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import axiosInstance from "../api";
 
 export default function CreateSkillGroup({ reloadList }) {
   const [show, setShow] = useState(false);
@@ -16,15 +17,15 @@ export default function CreateSkillGroup({ reloadList }) {
     var name = event.target.elements.name.value;
 
     const apiEndpoint = GetBaseUrl() + "/api/skill-groups/";
-
-    fetch(apiEndpoint, {
-      method: "POST",
-      body: JSON.stringify({
-        name: name,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
+    axiosInstance
+      .post(
+        "/api/skill-groups",
+        JSON.stringify({
+          name: name,
+        })
+      )
+      .then((response) => {
+        const { data } = response?.["data"];
         console.log(data);
         reloadList();
         handleClose();

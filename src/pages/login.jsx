@@ -8,50 +8,50 @@ function UserLogin() {
   }
   return (
     <div>
-      <main class="form-signin w-100 m-auto">
+      <main className="form-signin w-100 m-auto">
         <form>
-          <h1 class="h3 fw-normal mb-3">Please sign in</h1>
+          <h1 className="h3 fw-normal mb-3">Please sign in</h1>
 
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="email"
               defaultValue="demo@example.com"
-              class="form-control"
+              className="form-control"
               id="floatingInput"
               placeholder="name@example.com"
             ></input>
-            <label for="floatingInput">Email address</label>
+            <label htmlFor="floatingInput">Email address</label>
           </div>
-          <div class="form-floating">
+          <div className="form-floating">
             <input
               type="password"
               defaultValue="admin"
-              class="form-control"
+              className="form-control"
               id="floatingPassword"
               placeholder="Password"
             ></input>
-            <label for="floatingPassword">Password</label>
+            <label htmlFor="floatingPassword">Password</label>
           </div>
 
-          <div class="form-check my-3 text-start">
+          <div className="form-check my-3 text-start">
             <input
-              class="form-check-input"
+              className="form-check-input"
               type="checkbox"
               value="remember-me"
               id="flexCheckDefault"
             ></input>
-            <label class="form-check-label" for="flexCheckDefault">
+            <label className="form-check-label" htmlFor="flexCheckDefault">
               Remember me
             </label>
           </div>
           <button
-            class="btn btn-primary w-100 py-2"
+            className="btn btn-primary w-100 py-2"
             type="submit"
             onClick={handleLogin}
           >
             Sign in
           </button>
-          <p class="text-body-secondary mb-3 mt-5">&copy; 2017–2024</p>
+          <p className="text-body-secondary mb-3 mt-5">&copy; 2017–2024</p>
         </form>
       </main>
     </div>

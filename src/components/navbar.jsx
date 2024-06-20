@@ -7,19 +7,19 @@ export default function GlobalNavbar() {
     <Navbar bg="light" data-bs-theme="light">
       <Navbar.Brand href="#home">BFZ</Navbar.Brand>
       <Nav className="me-auto">
-        <Link to={`/home`} class="nav-link">
+        <Link to={`/home`} className="nav-link">
           Home
         </Link>
-        <Link to={`/users`} class="nav-link">
+        <Link to={`/users`} className="nav-link">
           Users
         </Link>
-        <Link to={`/skills`} class="nav-link">
+        <Link to={`/skills`} className="nav-link">
           Skills
         </Link>
-        <Link to={`/skill-groups`} class="nav-link">
+        <Link to={`/skill-groups`} className="nav-link">
           Groups
         </Link>
-        <Link to={`/login`} class="nav-link">
+        <Link to={`/login`} className="nav-link">
           Logout
         </Link>
       </Nav>

@@ -16,8 +16,8 @@ export default function ErrorPage() {
       <br />
 
       <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <Link to={`/home`} class="breadcrumb-item active" aria-current="page">
+        <ol className="breadcrumb">
+          <Link to={`/home`} className="breadcrumb-item active" aria-current="page">
             Home
           </Link>
         </ol>

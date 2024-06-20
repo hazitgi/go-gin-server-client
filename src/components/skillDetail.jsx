@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import { useState, useEffect } from "react";
 import GetBaseUrl from "../conf";
+import axiosInstance from "../api";
 
 export default function SkillDetail() {
   const [data, setData] = useState([]);
@@ -11,15 +12,12 @@ export default function SkillDetail() {
 
   function loadGroupLists(event) {
     console.log(event);
-    const apiEndPoint = GetBaseUrl() + "/api/skill-groups/";
-    fetch(apiEndPoint, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setSkillGroups(data);
-      });
+    axiosInstance.get("/api/skill-groups").then((response) => {
+      const { data } = response?.["data"];
+      console.log(data);
+
+      setSkillGroups(data);
+    });
   }
   const apiEndPoint = GetBaseUrl() + "/api/skills/" + skillId + "/";
 
@@ -31,15 +29,16 @@ export default function SkillDetail() {
     var name = event.target.elements.name.value;
     var group = event.target.elements.group.value;
 
-    fetch(apiEndPoint, {
-      method: "PATCH",
-      body: JSON.stringify({
-        name: name,
-        group: group,
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
+    axiosInstance
+      .post(
+        "/api/skills/" + skillId + "/",
+        JSON.stringify({
+          name: name,
+          group: group,
+        })
+      )
+      .then((response) => {
+        const { data } = response?.["data"];
         console.log(data);
         // alert(JSON.stringify(data));
         navigate("/skills");
@@ -49,32 +48,21 @@ export default function SkillDetail() {
   function deleteSill(event) {
     event.preventDefault();
     console.log("Deleting skill...");
-    fetch(apiEndPoint, {
-      method: "DELETE",
-    })
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        // alert(JSON.stringify(data));
-        navigate("/skills");
-      });
+    axiosInstance.delete("/api/skills/" + skillId).then((response) => {
+      const { data } = response?.["data"];
+      console.log(data);
+      // alert(JSON.stringify(data));
+      navigate("/skills");
+    });
   }
 
   useEffect(() => {
     function getSkillDetails() {
-      fetch(apiEndPoint, {
-        method: "GET",
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          setData(data);
-        });
+      axiosInstance.get("/api/skills/" + skillId).then((response) => {
+        const { data } = response?.["data"];
+        console.log(data);
+        setData(data);
+      });
     }
 
     loadGroupLists(null);
@@ -102,9 +90,10 @@ export default function SkillDetail() {
             <option selected value={data.skillGroup ? data.skillGroup.id : ""}>
               {data.skillGroup ? data.skillGroup.name : "select"}
             </option>
-            {skillGroups.map((item) => (
-              <option value={item.id}>{item.name}</option>
-            ))}
+            {skillGroups &&
+              skillGroups.map((item) => (
+                <option value={item.id}>{item.name}</option>
+              ))}
           </select>
         </div>
         <button type="submit" className="btn btn-primary">

@@ -5,6 +5,7 @@ import GetBaseUrl from "../conf";
 import CompetenceComponent from "./competence";
 import AddCompetence from "./addCompetence";
 import Table from "react-bootstrap/Table";
+import axiosInstance from "../api";
 
 export default function UserCompetence({
   reloadUserState,
@@ -15,7 +16,7 @@ export default function UserCompetence({
 
   const [userData, setUserData] = useState([]);
   const [competenceData, setCompetenceData] = useState([]);
-  const apiEndPoint = GetBaseUrl() + "/api/users/" + userId + "/";
+  const apiEndPoint = GetBaseUrl() + "/api/users/" + userId;
 
   console.log("UserDetailApi: ", apiEndPoint);
   console.log(userData); //fix this
@@ -61,21 +62,19 @@ export default function UserCompetence({
   useEffect(() => {
     function getUserDetails() {
       console.log("get user detail");
-      fetch(apiEndPoint, {
+      axiosInstance({
+        url: "/api/users/" + userId,
         method: "GET",
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          setUserData(data);
-          setCompetenceData(data.competence);
-          reloadCompleted();
-        });
+      }).then((response) => {
+        const { data } = response?.["data"];
+        console.log(data);
+        setUserData(data);
+        setCompetenceData(data.competence);
+        reloadCompleted();
+      });
     }
     getUserDetails();
-  }, [apiEndPoint, reloadUserState, reloadCompleted]);
+  }, [userId, reloadUserState, reloadCompleted]);
 
   return (
     <div>
@@ -96,14 +95,15 @@ export default function UserCompetence({
           </tr>
         </thead>
         <tbody>
-          {competenceData.map((item) => (
-            <CompetenceComponent
-              id={item.id}
-              skill={item.skill.name}
-              skillGroup={item.skill.skillGroup.name}
-              rank={item.rank}
-            ></CompetenceComponent>
-          ))}
+          {competenceData &&
+            competenceData.map((item) => (
+              <CompetenceComponent
+                id={item.id}
+                skill={item.skill.name}
+                skillGroup={item.skill.skillGroup.name}
+                rank={item.rank}
+              ></CompetenceComponent>
+            ))}
         </tbody>
       </Table>
     </div>

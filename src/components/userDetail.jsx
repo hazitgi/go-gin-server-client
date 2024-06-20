@@ -3,6 +3,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import GetBaseUrl from "../conf";
+import axiosInstance from "../api";
 
 export default function UserDetail(s) {
   const { userId } = useParams();
@@ -21,50 +22,44 @@ export default function UserDetail(s) {
     var email = event.target.elements.email.value;
     console.log(fullName);
     console.log(email);
-
-    fetch(apiEndPoint, {
+    axiosInstance({
+      url: "/api/users/" + userId,
       method: "PATCH",
-      body: JSON.stringify({
+      data: JSON.stringify({
         fullName: fullName,
         email: email,
       }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        navigate("/users");
-      });
+    }).then((response) => {
+      const { data } = response?.["data"];
+      console.log(data);
+      navigate("/users");
+    });
   }
 
   function deleteUser(event) {
     event.preventDefault();
     console.log("Deleting user...");
-    fetch(apiEndPoint, {
+    axiosInstance({
+      url: "/api/users/" + userId,
       method: "DELETE",
-    })
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        navigate("/users");
-      });
+    }).then((response) => {
+      const { data } = response?.["data"];
+      console.log(data);
+      navigate("/users");
+    });
   }
 
   useEffect(() => {
     function getUserDetails() {
       console.log("get user detail");
-      fetch(apiEndPoint, {
+      axiosInstance({
+        url: "/api/users/" + userId,
         method: "GET",
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          setData(data);
-        });
+      }).then((response) => {
+        const { data } = response?.["data"];
+        console.log(data);
+        setData(data);
+      });
     }
 
     getUserDetails();

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GetBaseUrl from "../conf";
 import SkillGroup from "./skillGroup";
+import axiosInstance from "../api";
 
 export default function SkillGroupList({ reloadState, listReloadComplete }) {
   const [data, setData] = useState([]);
@@ -8,14 +9,14 @@ export default function SkillGroupList({ reloadState, listReloadComplete }) {
   function handleListRefresh(event) {
     console.log(event);
     const apiEndPoint = GetBaseUrl() + "/api/skill-groups/";
-    fetch(apiEndPoint, {
+    axiosInstance({
+      url: "/api/skill-groups",
       method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setData(data);
-      });
+    }).then((response) => {
+      const { data } = response?.["data"];
+      console.log(data);
+      setData(data);
+    });
   }
 
   useEffect(() => {
@@ -29,7 +30,7 @@ export default function SkillGroupList({ reloadState, listReloadComplete }) {
       <h3>Skill Groups</h3>
       <hr />
 
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
             <th scope="col">#ID</th>
@@ -37,9 +38,8 @@ export default function SkillGroupList({ reloadState, listReloadComplete }) {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) => (
-            <SkillGroup id={item.id} name={item.name} />
-          ))}
+          {data &&
+            data.map((item) => <SkillGroup id={item.id} name={item.name} />)}
         </tbody>
       </table>
     </div>

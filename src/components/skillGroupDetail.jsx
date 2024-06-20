@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import { useState, useEffect } from "react";
 import GetBaseUrl from "../conf";
+import axiosInstance from "../api";
 
 export default function SkillGroupDetail() {
   const [data, setData] = useState([]);
@@ -15,50 +16,44 @@ export default function SkillGroupDetail() {
     event.preventDefault();
 
     var name = event.target.elements.name.value;
-
-    fetch(apiEndPoint, {
+    axiosInstance({
+      url: "/api/skill-groups/" + groupId,
       method: "PATCH",
-      body: JSON.stringify({
+      data: JSON.stringify({
         name: name,
       }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        // alert(JSON.stringify(data));
-        navigate("/skill-groups");
-      });
+    }).then((response) => {
+      const { data } = response?.["data"];
+      console.log(data);
+      // alert(JSON.stringify(data));
+      navigate("/skill-groups");
+    });
   }
 
   function deleteSill(event) {
     event.preventDefault();
     console.log("Deleting skill...");
-    fetch(apiEndPoint, {
+    axiosInstance({
+      url: "/api/skill-groups/" + groupId,
       method: "DELETE",
-    })
-      .then((response) => {
-        console.log(response);
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        // alert(JSON.stringify(data));
-        navigate("/skill-groups");
-      });
+    }).then((response) => {
+      const { data } = response?.["data"];
+      console.log(data);
+      // alert(JSON.stringify(data));
+      navigate("/skill-groups");
+    });
   }
 
   useEffect(() => {
     function getSkillDetails() {
-      fetch(apiEndPoint, {
+      axiosInstance({
+        url: "/api/skill-groups/" + groupId,
         method: "GET",
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          setData(data);
-        });
+      }).then((response) => {
+        const { data } = response?.["data"];
+        console.log(data);
+        setData(data);
+      });
     }
 
     getSkillDetails();

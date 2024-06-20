@@ -4,6 +4,7 @@ import GetBaseUrl from "../conf";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import axiosInstance from "../api";
 
 export default function AddCompetence({ userId, handleUserReload }) {
   console.log(userId);
@@ -37,17 +38,16 @@ export default function AddCompetence({ userId, handleUserReload }) {
     console.log(skill);
     console.log(rank);
 
-    const apiEndpoint = GetBaseUrl() + "/api/users/" + userId + "/skills";
-
-    fetch(apiEndpoint, {
-      method: "POST",
-      body: JSON.stringify({
-        skill: parseInt(skill),
-        rank: parseInt(rank),
-      }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
+    axiosInstance
+      .post(
+        "/api/users/" + userId + "/skills",
+        JSON.stringify({
+          skill: parseInt(skill),
+          rank: parseInt(rank),
+        })
+      )
+      .then((response) => {
+        const { data } = response?.["data"];
         console.log(data);
         handleUserReload();
         handleClose();
@@ -55,14 +55,12 @@ export default function AddCompetence({ userId, handleUserReload }) {
   }
 
   function refreshSkillList() {
-    const apiEndPoint = GetBaseUrl() + "/api/skills/";
-    fetch(apiEndPoint, {
-      method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setSkillListData(data);
-      });
+    axiosInstance.get("/api/skills").then((response) => {
+      const { data } = response?.["data"];
+      console.log(data);
+      handleUserReload();
+      handleClose();
+    });
   }
 
   useEffect(() => {
@@ -87,18 +85,20 @@ export default function AddCompetence({ userId, handleUserReload }) {
             <Form.Group className="mb-3" controlId="skill">
               <Form.Select aria-label="Default select example">
                 <option id="skill">Select Skill</option>
-                {skillList.map((item) => (
-                  <option value={item.id}>{item.name}</option>
-                ))}
+                {skillList &&
+                  skillList.map((item) => (
+                    <option value={item.id}>{item.name}</option>
+                  ))}
               </Form.Select>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="rank">
               <Form.Select aria-label="Default select example">
                 <option id="rank">Select Rank</option>
-                {rankList.map((item) => (
-                  <option value={item.id}>{item.name}</option>
-                ))}
+                {rankList &&
+                  rankList.map((item) => (
+                    <option value={item.id}>{item.name}</option>
+                  ))}
               </Form.Select>
             </Form.Group>
 

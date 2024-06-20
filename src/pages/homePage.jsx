@@ -21,7 +21,7 @@ export default function HomePage() {
                 </Card.Text>
                 <Link
                   to={`/users`}
-                  class="breadcrumb-item active"
+                  className="breadcrumb-item active"
                   aria-current="page"
                 >
                   <Button variant="primary">Manage Users</Button>

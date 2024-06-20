@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import GetBaseUrl from "../conf";
 import Skill from "./skill";
+import axiosInstance from "../api";
 
 export default function SkillList({ reloadState, skillListReloadComplete }) {
   const [data, setData] = useState([]);
@@ -8,14 +9,14 @@ export default function SkillList({ reloadState, skillListReloadComplete }) {
   function handleListRefresh(event) {
     console.log(event);
     const apiEndPoint = GetBaseUrl() + "/api/skills/";
-    fetch(apiEndPoint, {
+    axiosInstance({
+      url: "/api/skills",
       method: "GET",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        setData(data);
-      });
+    }).then((response) => {
+      const { data } = response?.["data"];
+      console.log(data);
+      setData(data);
+    });
   }
 
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function SkillList({ reloadState, skillListReloadComplete }) {
       <hr />
 
       <br />
-      <table class="table">
+      <table className="table">
         <thead>
           <tr>
             <th scope="col">#ID</th>
