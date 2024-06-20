@@ -75,7 +75,9 @@ export default function CreateSkill({ reloadList }) {
                 <option id="group">Select Group</option>
                 {skillGroups &&
                   skillGroups.map((item) => (
-                    <option value={item.id}>{item.name}</option>
+                    <option value={item.id} key={item.id}>
+                      {item.name}
+                    </option>
                   ))}
               </Form.Select>
             </Form.Group>
