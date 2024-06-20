@@ -8,7 +8,7 @@ import axiosInstance from "../api";
 export default function SkillGroupDetail() {
   const [data, setData] = useState([]);
   const { groupId } = useParams();
-  const apiEndPoint = GetBaseUrl() + "/api/skill-groups/" + groupId + "/";
+  const apiEndPoint = GetBaseUrl() + "/api/skill-groups/" + groupId;
 
   const navigate = useNavigate();
 

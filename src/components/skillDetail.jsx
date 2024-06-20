@@ -19,7 +19,7 @@ export default function SkillDetail() {
       setSkillGroups(data);
     });
   }
-  const apiEndPoint = GetBaseUrl() + "/api/skills/" + skillId + "/";
+  const apiEndPoint = GetBaseUrl() + "/api/skills/" + skillId;
 
   const navigate = useNavigate();
 
@@ -31,7 +31,7 @@ export default function SkillDetail() {
 
     axiosInstance
       .post(
-        "/api/skills/" + skillId + "/",
+        "/api/skills/" + skillId,
         JSON.stringify({
           name: name,
           group: group,

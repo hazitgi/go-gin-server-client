@@ -9,7 +9,7 @@ export default function UserDetail(s) {
   const { userId } = useParams();
 
   const [data, setData] = useState([]);
-  const apiEndPoint = GetBaseUrl() + "/api/users/" + userId + "/";
+  const apiEndPoint = GetBaseUrl() + "/api/users/" + userId;
 
   const navigate = useNavigate();
 
