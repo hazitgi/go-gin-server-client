@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/hazitgi/go-gin-server-client/static/css/main.c3e9d886.css",
+    "main.js": "/hazitgi/go-gin-server-client/static/js/main.51521c41.js",
+    "static/js/453.b52ef9c1.chunk.js": "/hazitgi/go-gin-server-client/static/js/453.b52ef9c1.chunk.js",
+    "index.html": "/hazitgi/go-gin-server-client/index.html",
+    "main.c3e9d886.css.map": "/hazitgi/go-gin-server-client/static/css/main.c3e9d886.css.map",
+    "main.51521c41.js.map": "/hazitgi/go-gin-server-client/static/js/main.51521c41.js.map",
+    "453.b52ef9c1.chunk.js.map": "/hazitgi/go-gin-server-client/static/js/453.b52ef9c1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c3e9d886.css",
+    "static/js/main.51521c41.js"
+  ]
+}
