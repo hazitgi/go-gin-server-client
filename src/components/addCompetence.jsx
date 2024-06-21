@@ -35,8 +35,6 @@ export default function AddCompetence({ userId, handleUserReload }) {
 
     var skill = event.target.elements.skill.value;
     var rank = event.target.elements.rank.value;
-    console.log(skill);
-    console.log(rank);
 
     axiosInstance
       .post(
@@ -58,6 +56,7 @@ export default function AddCompetence({ userId, handleUserReload }) {
     axiosInstance.get("/api/skills").then((response) => {
       const { data } = response?.["data"];
       console.log(data);
+      setSkillListData(data);
       handleUserReload();
       handleClose();
     });
@@ -87,7 +86,9 @@ export default function AddCompetence({ userId, handleUserReload }) {
                 <option id="skill">Select Skill</option>
                 {skillList &&
                   skillList.map((item) => (
-                    <option value={item.id}>{item.name}</option>
+                    <option value={item.id} key={item.id}>
+                      {item.name}
+                    </option>
                   ))}
               </Form.Select>
             </Form.Group>
@@ -97,7 +98,9 @@ export default function AddCompetence({ userId, handleUserReload }) {
                 <option id="rank">Select Rank</option>
                 {rankList &&
                   rankList.map((item) => (
-                    <option value={item.id}>{item.name}</option>
+                    <option value={item.id} key={item.id}>
+                      {item.name}
+                    </option>
                   ))}
               </Form.Select>
             </Form.Group>

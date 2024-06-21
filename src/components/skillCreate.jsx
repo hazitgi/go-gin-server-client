@@ -36,7 +36,7 @@ export default function CreateSkill({ reloadList }) {
         "/api/skills",
         JSON.stringify({
           name: name,
-          group: group,
+          group: parseInt(group),
         })
       )
       .then((response) => {

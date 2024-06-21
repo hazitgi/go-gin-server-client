@@ -29,20 +29,19 @@ export default function SkillDetail() {
     var name = event.target.elements.name.value;
     var group = event.target.elements.group.value;
 
-    axiosInstance
-      .post(
-        "/api/skills/" + skillId,
-        JSON.stringify({
-          name: name,
-          group: group,
-        })
-      )
-      .then((response) => {
-        const { data } = response?.["data"];
-        console.log(data);
-        // alert(JSON.stringify(data));
-        navigate("/skills");
-      });
+    axiosInstance({
+      url: "/api/skills/" + skillId,
+      method: "PATCH",
+      data: {
+        name: name,
+        group: parseInt(group),
+      },
+    }).then((response) => {
+      const { data } = response?.["data"];
+      console.log(data);
+      // alert(JSON.stringify(data));
+      navigate("/skills");
+    });
   }
 
   function deleteSill(event) {
